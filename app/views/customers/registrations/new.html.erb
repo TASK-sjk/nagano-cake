@@ -1,0 +1,129 @@
+<%= render 'customers/list', customer: @customer %>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3 style="background-color: #DDDDDD;width: 160px;text-align: center;margin-top:50px;margin-left:40px">新規会員登録</h3>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
+        <tbody>
+
+          <tr class="field" style="margin:50px">
+            <td>
+              <h5><strong>名前</strong></h5>
+            </td>
+            <td>
+              <%= f.label :last_name, "(姓)" %>
+            </td>
+            <td>
+              <%= f.text_field :last_name, autofocus: true, style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+            <td style="width:20px"> </td>
+            <td>
+              <%= f.label :first_name, "(名)" %>
+            </td>
+            <td>
+              <%= f.text_field :first_name, style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+          <tr class="field">
+            <td>
+              <h5><strong>フリガナ</strong></h5>
+            </td>
+            <td>
+              <%= f.label :kana_last_name, "(セイ)", style:"padding-right: 5px;" %>
+            </td>
+            <td>
+              <%= f.text_field :kana_last_name, style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+            <td style="width:20px"> </td>
+            <td>
+              <%= f.label :kana_first_name, "(メイ)", style:"padding-right: 5px;" %>
+            </td>
+            <td>
+              <%= f.text_field :kana_first_name, style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+          <tr class="field">
+            <td>
+              <%= f.label :email, "メールアドレス" %>
+            </td>
+            <td></td>
+            <td>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+          <tr class="field">
+            <td>
+              <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+            </td>
+            <td></td>
+            <td>
+              <%= f.text_field :postcode, style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+          <tr class="field">
+            <td>
+              <%= f.label :address, "住所" %>
+            </td>
+            <td></td>
+            <td colspan="4">
+              <%= f.text_field :address, size:"50px" , style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+          <tr class="field">
+            <td>
+              <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
+            </td>
+            <td></td>
+            <td>
+              <%= f.text_field :phone_number, style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+          <tr class="field">
+            <td>
+              <%= f.label :password, "パスワード" %>
+              <% if @minimum_password_length %>
+              <em><strong>(<%= @minimum_password_length %>文字以上)</strong></em>
+              <% end %>
+            </td>
+            <td></td>
+            <td>
+              <%= f.password_field :password, autocomplete: "new-password", style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+          <tr class="field">
+            <td>
+              <%= f.label :password_confirmation, "パスワード(確認用)" %>
+            </td>
+            <td></td>
+            <td>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", style:"border-radius: 3px; border: 1px solid #222222" %>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <div class="actions" style="text-align: center;">
+        <%= f.submit "新規登録", class:"btn btn-success btn-lg", style:"padding-left:80px; padding-right:80px;" %>
+      </div>
+
+    <% end %>
+
+    <h3 style="background-color: #DDDDDD;width: 200px;text-align: center;margin-left:40px">既に登録済みの方</h3>
+    <h4 style="margin-left:70px;margin-top:40px"><%= link_to "こちら ", new_customer_session_path %>からログインしてください。</h4>
+  </div>
+</div>
+
+<!-- <%= render "customers/shared/links" %> -->

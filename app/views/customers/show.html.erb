@@ -1,2 +1,63 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<%= render 'customers/list', customer: @customer %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="notice">
+				<%= flash[:update] %>
+			</div>
+			<h3 style="background-color: #DDDDDD;width: 140px;text-align: center;margin-top:50px;margin-left:100px">マイページ</h3><br>
+			<h4><strong>登録情報</strong>
+			<%= link_to "編集する", customer_edit_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin: 0 10px;" %>
+			<%= link_to "パスワードを変更する", edit_customer_registration_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px;" %>
+			</h4>
+			<table class="table table-bordered" style="border: 1px solid black; bordercolor="black">
+				<tbody>
+					<tr>
+						<td class="col-xs-2" style="background-color: #DCDCDC; border-color: black;">氏名</td>
+						<td class="col-xs-3" style="border-color: black;"><%= @current_customer.last_name %>  <%= @current_customer.first_name %></td>
+					</tr>
+					<tr>
+						<td class="col-xs-2" style="background-color: #DCDCDC; border-color: black;">カナ</td>
+						<td class="col-xs-3" style="border-color: black;"><%= @current_customer.kana_last_name %>  <%= @current_customer.kana_first_name %></td>
+					</tr>
+					<tr>
+						<td class="col-xs-2" style="background-color: #DCDCDC; border-color: black;">郵便番号</td>
+						<td class="col-xs-3" style="border-color: black;"><%= @current_customer.postcode %></td>
+					</tr>
+					<tr>
+						<td class="col-xs-2" style="background-color: #DCDCDC; border-color: black;">住所</td>
+						<td class="col-xs-3" style="border-color: black;"><%= @current_customer.address %></td>
+					</tr>
+					<tr>
+						<td class="col-xs-2" style="background-color: #DCDCDC; border-color: black;">電話番号</td>
+						<td class="col-xs-3" style="border-color: black;"><%= @current_customer.phone_number %></td>
+					</tr>
+					<tr>
+						<td class="col-xs-2" style="background-color: #DCDCDC; border-color: black;">メールアドレス</td>
+						<td class="col-xs-3" style="border-color: black;"><%= @current_customer.email %></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<h4><strong>配送先</strong></h4>
+						</td>
+						<td><h4><%= link_to "一覧を見る", addresses_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; margin-left: 20px;" %></h4>
+						</td>
+					</tr>
+					<tr>
+
+						<td>
+							<h4><strong>注文履歴</strong></h4>
+						</td>
+						<td><h4><%= link_to "一覧を見る", orders_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; margin-left: 20px;" %></h4>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

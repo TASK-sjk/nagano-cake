@@ -1,0 +1,41 @@
+<header>
+  <nav class="navbar navbar-fixed-top" style="background-color: #232f3e;">
+    <div class="container relative">
+      <div class="row">
+        <div id="logo navbar-left">
+          <!-- ロゴが入る -->
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+              <% if customer_signed_in? %>
+                <li style="margin: 10px;">
+                  <h3 style="color: white; font-size: 15px;">ようこそ、<%= current_customer.last_name %> <%= current_customer.first_name %>さん!</h3>
+                </li>
+                <li style="margin: 10px;">
+                  <%= link_to 'マイページ', customers_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+                </li>
+                <li style="margin: 10px;">
+                  <%= link_to '商品一覧', items_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+                </li>
+                <li style="margin: 10px;">
+                  <%= link_to 'カート', cart_items_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+                </li>
+                <li style="margin: 10px;">
+                  <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+                </li>
+              <% else %>
+                <li style="margin: 10px;">
+                  <%= link_to '商品一覧', items_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+                </li>
+                <li style="margin: 10px;">
+                  <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+                </li>
+                <li style="margin: 10px;">
+                  <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </nav>
+</header>
