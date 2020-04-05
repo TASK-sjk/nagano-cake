@@ -1,0 +1,21 @@
+<%= render 'customers/list', customer: @customer %>
+<div class="container">
+	<div class="row">
+		<h3 style="margin-top: 100px;"><strong>本当に退会しますか？<strong></h3>
+		<h3 style="margin-top: 45px;">退会すると、会員登録情報や<br>
+			これまでの購入履歴が閲覧できなくなります。<br>
+			退会する場合は、「退会する」をクリックしてください。</h3>
+		<style>
+			h3 {
+				text-align: center;
+			}
+		</style>
+
+		<div style="margin-top: 50px; text-align: center">
+			<%= link_to "退会しない", customers_path, class:"btn btn-primary", style:"padding-left: 25px; padding-right: 25px; margin-right: 50px" %>
+			<% if customer_signed_in? && @customer.id == current_customer.id %>
+			    <%= link_to "退会する", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger", style:"padding-left: 25px; padding-right: 25px; margin-right: 50px" %>
+			<% end %>
+		</div>
+	</div>
+</div>
