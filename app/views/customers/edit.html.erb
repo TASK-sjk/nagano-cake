@@ -1,2 +1,98 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<%= render 'customers/list', customer: @customer %>
+<div class="container">
+    <h3 style="background-color: #DDDDDD;width: 160px;text-align: center;margin-top:50px;margin-left:40px">登録情報編集</h3>
+    <%= form_for @customer, url: customer_update_path do |f| %>
+
+	    <table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
+		    <tbody>
+
+			    <tr class="field" style="margin:50px">
+			        <td>
+			          <h5><strong>名前</strong></h5>
+			        </td>
+			        <td>
+			          <%= f.label :last_name, "(姓)" %>
+			        </td>
+			        <td>
+			          <%= f.text_field :last_name, autofocus: true, style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			        <td style="width:20px"> </td>
+			        <td>
+			          <%= f.label :first_name, "(名)" %>
+			        </td>
+			        <td>
+			          <%= f.text_field :first_name, style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			    </tr>
+
+			    <tr class="field">
+			        <td>
+			          <h5><strong>フリガナ</strong></h5>
+			        </td>
+			        <td>
+			          <%= f.label :kana_last_name, "(セイ)", style:"padding-right: 5px;" %>
+			        </td>
+			        <td>
+			          <%= f.text_field :kana_last_name, style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			        <td style="width:20px"></td>
+			        <td>
+			          <%= f.label :kana_first_name, "(メイ)", style:"padding-right: 5px;" %>
+			        </td>
+			        <td>
+			          <%= f.text_field :kana_first_name, style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			    </tr>
+
+			    <tr class="field">
+			        <td>
+			          <%= f.label :email, "メールアドレス" %>
+			        </td>
+			        <td></td>
+			        <td>
+			          <%= f.email_field :email, autofocus: true, autocomplete: "email", style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			    </tr>
+
+			    <tr class="field">
+			        <td>
+			          <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+			        </td>
+			        <td></td>
+			        <td>
+			          <%= f.text_field :postcode, style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			    </tr>
+
+			    <tr class="field">
+			        <td>
+			          <%= f.label :address, "住所" %>
+			        </td>
+			        <td></td>
+			        <td colspan="4">
+			          <%= f.text_field :address, size:"50px", style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			    </tr>
+
+			     <tr class="field">
+			        <td>
+			          <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
+			        </td>
+			        <td></td>
+			        <td>
+			          <%= f.text_field :phone_number, style:"border-radius: 3px; border: 1px solid #222222" %>
+			        </td>
+			    </tr>
+
+		    </tbody>
+		</table>
+
+	    <div class="actions">
+	        <%= f.submit "編集内容を保存する", class:"btn btn-primary", style:"padding-left:40px; padding-right:40px; margin-left: 150px;" %>
+
+	<% end %>
+
+	<%= link_to "退会する", customers_leave_path, class: "btn btn-danger", style:"margin-left: 100px;" %>
+
+
+</div>
