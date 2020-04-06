@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";  /*ここを追加*/
+@import "bootstrap";            /*ここを追加*/
+
+header {
+	height: 62px;
+}
+
+table > tbody > tr {
+	height: 35px;
+}
