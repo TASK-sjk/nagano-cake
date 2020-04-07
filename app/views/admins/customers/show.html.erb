@@ -1,2 +1,84 @@
-<h1>Admins::Customers#show</h1>
-<p>Find me in app/views/admins/customers/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="title">
+			<h3 style="background-color: #DDDDDD;width: 160px;text-align: center;margin-top: 50px;margin-left: 30px">会員詳細画面</h3>
+		</div>
+		<table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
+			<tbody>
+				<tr>
+					<td>
+						<h5><strong>顧客ID</strong></h5>
+					</td>
+					<td>
+					</td>
+					<td>
+						#有効・無効
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5><strong>氏名</strong></h5>
+					</td>
+					<td>
+						<%= @current_customer.last_name %>
+						<%= @current_customer.first_name %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5><stromg>フリガナ</stromg></h5>
+					</td>
+					<td>
+						<%= @current_customer.kana_last_name %>
+						<%= @current_customer.kana_first_name %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5><strong>郵便番号</strong></h5>
+					</td>
+					<td>
+						<%= @current_customer.postcode %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5><strong>住所</strong></h5>
+					</td>
+					<td>
+						<%= @current_customer.address %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5><stong>電話番号</stong></h5>
+					</td>
+					<td>
+						<%= @current_customer.phone_number %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5><strong>メールアドレス</strong></h5>
+					</td>
+					<td>
+						<%= @current_customer.email %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= link_to '編集する', edit_admins_customers_path(@customer), class: "btn-sm btn-primary" %>
+					</td>
+					<td>
+						<%= link_to '注文履歴一覧を見る', orders_path, class: "btn-sm btn-primary" %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+
+
