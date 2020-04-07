@@ -1,2 +1,87 @@
-<h1>Admins::Customers#edit</h1>
-<p>Find me in app/views/admins/customers/edit.html.erb</p>
+<div class="container">
+	<div class="title">
+		<h3 style="background-color: #DDDDDD; width: 160px; text-align: center; margin-top: 50px; margin-left: 30px">会員編集画面</h3>
+	</div>
+
+	<%= form_for(@custmer, url: "/customers/#{@customer.id}") do |f| %>
+	<table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
+		<tbody>
+			<tr>
+				<td>
+					<h5><strong>会員ID</strong></h5>
+				</td>
+				<td>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>氏名</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :last_name %>
+					<%= f.text_field :first_name %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>フリガナ</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :kana_last_name %>
+					<%= f.text_field :kana_first_name %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>郵便番号</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :postcode %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>住所</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :address %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>電話番号</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :phone_number %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>メールアドレス</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :email %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>会員ステータス</strong></h5>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="actions">
+		<%= f.submit "編集を保存する", class:"btn btn-primary", style:"padding-left:40px; padding-right:40px; margin-left: 150px;" %>
+
+		<% end %>
+	</div>
+</div>
+
+
+
+
+
+
+
+
