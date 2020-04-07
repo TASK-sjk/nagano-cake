@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   def index
+    @customer = current_customer
+    @categories = Category.all
   end
 
   def create
@@ -12,6 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @customer = current_customer
   end
 
   def update

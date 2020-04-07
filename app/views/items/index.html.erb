@@ -1,2 +1,23 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<%= render 'customers/list', customer: @customer %>
+
+<div class="row">
+
+	<div class="col-xs-3">
+		<%= render 'items/category.search', categories: @categories %>
+
+	</div>
+
+	<div class="col-xs-9">
+		<h1>商品一覧</h1>
+		<div class="row">
+			<table class="table">
+
+				<tr>
+					<th>ジャンル検索</th>
+				</tr>
+
+			</table>
+
+		</div>
+	</div>
+</div>

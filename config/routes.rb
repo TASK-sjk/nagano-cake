@@ -23,10 +23,10 @@ Rails.application.routes.draw do
   get 'customers/leave' => 'customers#leave', as: 'customers/leave'
 
   namespace :admins do
-    resource :customers, only:[:index, :edit, :show]
-    resource :categories, only:[:index]
-    resource :items, only:[:index, :show]
-    resource :orders, only:[:index, :show]
+    resources :customers, only:[:index, :edit, :show]
+    resources :categories, only:[:index]
+    resources :items, only:[:index, :show, :new, :edit, :create]
+    resources :orders, only:[:index, :show]
   end
 
   resource :customers, only: :show
