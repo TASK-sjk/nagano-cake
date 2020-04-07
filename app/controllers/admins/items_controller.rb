@@ -1,8 +1,10 @@
 class Admins::ItemsController < ApplicationController
   def index
+  	@items = Item.all
   end
 
   def show
+  	@item = Item.find(params[:id])
   end
 
   def new
@@ -14,7 +16,7 @@ class Admins::ItemsController < ApplicationController
   	if @item.save
   		redirect_to admins_items_path
   	else
-  		render 'index'
+  		render :new
   	end
   end
 

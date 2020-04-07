@@ -24,8 +24,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :customers, only:[:index, :edit, :show]
-    resources :categories, only:[:index]
-    resources :items, only:[:index, :show, :new, :edit, :create]
+    resources :categories, only:[:index, :edit, :create, :update]
+    resources :items, only:[:index, :show, :new, :edit, :create, :update]
     resources :orders, only:[:index, :show]
   end
 
@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   resources :addresses, only:[:index, :create, :new, :edit, :update, :destroy]
   resources :orders, only:[:index, :create, :new, :show]
   resources :cart_items, only:[:index, :create, :new, :destroy]
-  resources :categories, only:[:index, :create, :new, :edit, :update, :destroy]
   resources :items
 
 
