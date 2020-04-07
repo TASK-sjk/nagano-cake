@@ -1,9 +1,11 @@
 <h1>注文詳細画面</h1>
 
-<p>購入者</p> <%= %>
-<p>配送先</p>
-<P>支払方法</P>
-<p>注文ステータス</p>
+<p>購入者</p> <%= @order_item.customer.name%>
+<p>配送先</p> <%= @order_item.place %>
+<P>支払方法</P> <%= @order_item.pay_type %>
+<%= form_for @order do |f| %>
+<p>注文ステータス</p>  <%= f.select (:status, [['選択する', ''],['入金待ち', '入金確認', '製作中', '発送準備中', '発送済み']]) %> <%= f.submit "更新する" class="btn btn-primary" %>
+<% end %>
 
 <table>
 	<thead>
@@ -17,11 +19,14 @@
 	</thead>
 	<tbody>
 		<td>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
+			<tr><%= %></tr>
+			<tr><%= %></tr>
+			<tr><%= %></tr>
+			<tr><%= %></tr>
+			<%= form_for @order_item do |f| %>
+			<tr><%= f.select (:status, [['選択する', ''],['着手不可', '制作待ち', '製作中', '制作完了']]) %> <%= f.submit "更新する" class="btn btn-primary" %></tr>
+			<% end %>
 		</td>
 	</tbody>
 </table>
+<%= %>
