@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @customer = current_customer
-    @categories = Category.all
+    @categories = Category.where(status: "有効")
   end
 
   def create
@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 
   def show
     @customer = current_customer
+    @categories = Category.where(status: "有効")
   end
 
   def update

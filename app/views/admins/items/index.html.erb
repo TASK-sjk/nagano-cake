@@ -1,4 +1,5 @@
-<h2>商品一覧画面</h2>
+<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:70px">商品一覧画面</h3>
+
 
 <div class="container">
 	<div class="row">
@@ -14,10 +15,11 @@
 				<% @items.each do |item| %>
 				<tr>
 					<th><%= item.id %></th>
-					<th><%= item.name %></th>
+					<th><%= link_to item.name, admins_item_path(item) %>
+					</th>
 					<th><%= item.price %></th>
-					<th></th>
-					<th></th>
+					<th><%= item.category.name %></th>
+					<th><%= item.status %></th>
 				</tr>
 				<% end %>
 			</table>

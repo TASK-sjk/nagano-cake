@@ -1,4 +1,4 @@
-<h2>商品　新規登録画面</h2>
+<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:50px;margin-left:70px">商品　新規登録画面</h3>
 
 <div class="container">
 	<div class="row">
@@ -16,7 +16,9 @@
 		<% end %>
 		<div class="col-xs-4">
 			<div class="field">
-				<%= f.label :image %>
+				<%= image_tag 'icon-no-image.svg', size: '300x200' %>
+				<br>
+				<br>
 				<%= f.attachment_field :image %>
 			</div>
 
@@ -35,22 +37,24 @@
 				</tr>
 				<tr>
 					<th><%= f.label :ジャンル %></th>
-					<td><%= f.text_area :category %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :税抜き価格 %></th>
-					<td><%= f.text_field :price %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :販売ステータス %></th>
-					<td>内容（コンテンツ）</td>
-				</tr>
-			</table>
-		</div>
+					<td><%= f.select :category_id, Category.where(status: "有効").map { |category| [category.name, category.id] } %>
 
-		<div class="col-xs-2">
-			<%= f.submit "新規登録" %>
-		</div>
-		<% end %>
+				</td>
+			</tr>
+			<tr>
+				<th><%= f.label :税抜き価格 %></th>
+				<td><%= f.text_field :price %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :販売ステータス %></th>
+				<td><%= f.select :status, Item.statuses.keys.to_a, {} %></td>
+			</tr>
+		</table>
 	</div>
+
+	<div class="col-xs-2">
+		<%= f.submit "新規登録" ,class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 200px;" %>
+	</div>
+	<% end %>
+</div>
 </div>

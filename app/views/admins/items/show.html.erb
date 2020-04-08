@@ -1,13 +1,16 @@
-<h2>商品詳細画面</h2>
+<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:70px">商品詳細画面</h3>
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<%= attachment_image_tag @item, :image ,:fill, 300, 200 %>
+		</div>
 		<div class="col-xs-6">
 			<table class="table">
 				<tr>
 					<th>商品名</th>
-					<td><%= @item.name %></td>
+					<td><%= @item.name %>
+					</td>
 				</tr>
 				<tr>
 					<th>商品説明</th>
@@ -15,20 +18,21 @@
 				</tr>
 				<tr>
 					<th>ジャンル</th>
-					<td><%= @item.category %></td>
+					<td><%= @item.category.name %></td>
 				</tr>
 				<tr>
-					<th>税抜き価格</th>
-					<td><%= @item.price %></td>
+					<th>税込価格（税抜き価格）</th>
+					<td><%= addTax(@item.price,1.1) %>
+						(<%= @item.price %> )</td>
 				</tr>
 				<tr>
 					<th>販売ステータス</th>
-					<td>内容（コンテンツ）</td>
+					<td><%= @item.status %></td>
 				</tr>
 			</table>
 		</div>
 		<div class="col-xs-2">
-			<%= link_to '編集する', edit_admins_item_path(item) %>
+			<%= link_to '編集する', edit_admins_item_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 200px;" %>
 		</div>
 	</div>
 </div>
