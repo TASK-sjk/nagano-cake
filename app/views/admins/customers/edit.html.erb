@@ -3,7 +3,7 @@
 		<h3 style="background-color: #DDDDDD; width: 160px; text-align: center; margin-top: 50px; margin-left: 30px">会員編集画面</h3>
 	</div>
 
-	<%= form_for(@custmer, url: "/customers/#{@customer.id}") do |f| %>
+	<%= form_for @custmer, url: admins_customer_path do |f| %>
 	<table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
 		<tbody>
 			<tr>

@@ -1,2 +1,70 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/addresses/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-1">
+		</div>
+		<div class="col-xs-9">
+			<div class="title">
+				<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top: 50px;margin-left: 60px">配送先登録/一覧</h3>
+			</div>
+			<%= form_for(@addresses, url: '/addresses') do |f| %>
+			<tr>
+				<td>
+					<h5><strong>郵便番号（ハイフンなし）</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :postcode %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><strong>住所</strong></h5>
+				</td>
+				<td>
+					<%= f.text_field :place %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h5><stromg>宛名</stromg></h5>
+				</td>
+				<td>
+					<%= f.text_field :receiver %>
+				</td>
+				<td>
+					<%= f.submit '登録する', class:"btn-success", style:"padding-left:40px; padding-right:40px; margin-left: 100px;" %>
+				</td>
+			</tr>
+			<% end %>
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>郵便番号</th>
+						<th>住所</th>
+						<th>宛名</th>
+						<th colspan="3"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @addresses.each do |address| %>
+					<tr>
+						<td>
+							<%= address.postcode %>
+						</td>
+						<td>
+							<%= address.place %>
+						</td>
+						<td>
+							<%= address.receiver %>
+						</td>
+						<td>
+							<%= link_to '編集する', edit_address_path(address), class: "btn-sm btn-primary" %>
+							<%= link_to "消去する", destroy_address_path(@address.id), method: delete, "data-comfirm" => "本当に削除しますか？" %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
