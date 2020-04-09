@@ -78,7 +78,7 @@
 
 <!-- controller -->
 def show
-    @order.new_total_price @order.total_price + @order.shipping_fee
+    @order.new_total_price = @order.total_price + @order.shipping_fee
     @order.pn = @order.order.price * @order.order_item.number
 end
 

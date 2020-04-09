@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'customers/leave' => 'customers#leave', as: 'customers/leave'
 
   namespace :admins do
+    get 'admins/top' => 'admins#top', as: 'top'
     resources :customers, only:[:index, :edit, :show]
     resources :categories, only:[:index, :edit, :create, :update]
     resources :items, only:[:index, :show, :new, :edit, :create, :update]
