@@ -16,10 +16,10 @@
 		<% end %>
 		<div class="col-xs-4">
 			<div class="field">
-				<%= attachment_image_tag @item, :image ,:fill, 300, 200 %>
+				<%= attachment_image_tag @item, :image ,:fill, 300, 200,fallback: "icon-no-image.svg" ,size:'300x200'  %>
 				<br>
 				<br>
-				<%= f.attachment_field :image %>
+				<%= f.attachment_field :image ,style:"margin-left:40px;" %>
 			</div>
 
 		</div>

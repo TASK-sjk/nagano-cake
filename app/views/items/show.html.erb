@@ -8,10 +8,22 @@
 	</div>
 
 	<div class="col-xs-4">
+		<%= attachment_image_tag @item, :image ,:fill, 400, 230, style:"margin-top: 70px;margin-left:50px;" %>
 	</div>
 
 	<div class="col-xs-5">
-
-
-	</div>
+		<table class="table-borderless" style="margin-top:70px; margin-bottom:15px;margin-left:150px;">
+				<tr>
+					<td><%= @item.name %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= @item.body %></td>
+				</tr>
+				<tr>
+					<td>¥<%= addTax(@item.price,1.1) %>（税込）
+						</td>
+				</tr>
+			</table>
+    </div>
 </div>

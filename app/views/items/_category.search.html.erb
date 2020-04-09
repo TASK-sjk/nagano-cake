@@ -5,7 +5,8 @@
 	</tr>
 	<% categories.each do |category| %>
 	<tr>
-		<th><%= category.name %></th>
+		<th><%= link_to category.name, items_path(category_id: category.id) %>
+		</th>
 	</tr>
 	<% end %>
 </table>
