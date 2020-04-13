@@ -4,9 +4,9 @@ class ItemsController < ApplicationController
     @categories = Category.where(status: "有効")
     @items =Item.all
     if params[:category_id]
-    @items = Item.where(category_id: params[:category_id])
-
-  end
+      @items = Item.where(category_id: params[:category_id])
+      @category = Category.find(params[:category_id])
+    end
   end
 
   def create
@@ -22,6 +22,8 @@ class ItemsController < ApplicationController
     @customer = current_customer
     @categories = Category.where(status: "有効")
     @item = Item.find(params[:id])
+    @cart_item = CartItem.new
+
   end
 
   def update
@@ -32,6 +34,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :price, :body, :image, :category_id ,:status)
+    params.require(:item).permit(:name, :price, :body, :image, :category_id ,:status, cart_items_attributes: [:id, :number])
   end
 end

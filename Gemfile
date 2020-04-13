@@ -78,4 +78,3 @@ gem 'kaminari','~> 1.1.1'
 # 検索機能
 gem 'ransack'
 
-gem 'pry-byebug'

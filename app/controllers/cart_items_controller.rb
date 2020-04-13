@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+
   def index
   	@customer = current_customer
   	@cart_item = @customer.cart_items
@@ -6,11 +7,16 @@ class CartItemsController < ApplicationController
   end
 
   def create
-  	@item = Item.find(params[:cart_item][:item_id])
-  	@cart_item = current_customer.cart_items.new(cart_item)
-  	@cart_item.item_id = @item.id
-  	@cart_item.save
-  	redirect_to current_customer.cart_items_path
+  	# @item = Item.find(params[:cart_item][:item_id])
+  	# @cart_item = current_customer.cart_items.new(cart_item)
+  	# @cart_item.item_id = @item.id
+  	# @cart_item.save
+  	# redirect_to current_customer.cart_items_path
+
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    @cart_item.save!
+    redirect_to cart_items_path
   end
 
   def new
@@ -39,7 +45,8 @@ class CartItemsController < ApplicationController
 
   private
    def cart_item_params
-   	params.require(:cart_item).permit(:item_id, :customer_id)
+   	params.require(:cart_item).permit(:item_id, :customer_id, :number)
    end
 
 end
+
