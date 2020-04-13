@@ -1,6 +1,6 @@
 <!-- # <%= render%> -->
 
-<h1>注文一覧画面</h1>
+<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:50px;margin-left:70px">注文一覧画面</h3>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -12,12 +12,12 @@
 	</thead>
 	<tbody>
 		<tr>
-		    <% @order each do |order| %>
-		    <td><%= l order.created_at %></td>
-		    <td><%= order.customer_name %></td>
-		    <td><%= order.items.count %></td>
-		    <td></td>
-	    </tr>
+			<% @order each do |order| %>
+			<td><%= order.created_at %></td>
+			<td><%= order.customer_name %></td>
+			<td><%= order.items.count %></td>
+			<td><%=  f.select :status, options_for_select(Order.status.keys)%></td>
+		</tr>
 
 	</tbody>
 </table>

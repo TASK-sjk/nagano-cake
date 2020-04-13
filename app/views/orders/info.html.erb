@@ -1,2 +1,15 @@
-<h1>Orders#info</h1>
-<p>Find me in app/views/orders/info.html.erb</p>
+<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top: 50px;margin-left: 60px">注文情報入力</h3>
+
+<%= form_for @order do |f| %>
+    <%= f.label :pay_type, :クレジットカード %>
+    <%= f.radio_button :pay_type, "クレジットカード" %></br>
+    <%= f.label :pay_type, :銀行振込 %>
+    <%= f.radio_btton :pay_type, "銀行振込" %>
+<% end %>
+<%= form_for @order do |f| %>
+	<%= f.label :place, :customer_palce%>
+	<%= f.radio_button :place_type, "ご自身の住所" %>
+	<%= f.label :place, 
+	<% end %>
+
+<%= f.submit "確認画面へ進む" %>
