@@ -1,2 +1,45 @@
-<h1>Addresses#edit</h1>
-<p>Find me in app/views/addresses/edit.html.erb</p>
+<%= render 'customers/list', cutomer: @customer %><div class="container">
+	<div class="row">
+		<div class="col-xs-1">
+		</div>
+		<div class="col-xs-9">
+			<div class="title">
+				<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top: 50px;margin-left: 60px">配送先登録/一覧</h3>
+			</div>
+			<%= form_for(@address) do |f| %>
+			<table class="table-borderless">
+				<tbody>
+					<tr>
+						<td>
+							<h5><strong>郵便番号（ハイフンなし）</strong></h5>
+						</td>
+						<td>
+							<%= f.text_field :postcode %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h5><strong>住所</strong></h5>
+						</td>
+						<td>
+							<%= f.text_field :place %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h5><stromg>宛名</stromg></h5>
+						</td>
+						<td>
+							<%= f.text_field :receiver %>
+						</td>
+						<td>
+							<%= f.submit '登録する', class:"btn-success", style:"padding-left:40px; padding-right:40px; margin-left: 100px;" %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<% end %>
+		</div>
+	</div>
+</div>
+

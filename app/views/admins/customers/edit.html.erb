@@ -3,7 +3,7 @@
 		<h3 style="background-color: #DDDDDD; width: 160px; text-align: center; margin-top: 50px; margin-left: 30px">会員編集画面</h3>
 	</div>
 
-	<%= form_for @custmer, url: admins_customer_path do |f| %>
+	<%= form_for @customer, url:admins_update_path do |f| %>
 	<table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
 		<tbody>
 			<tr>
@@ -11,6 +11,7 @@
 					<h5><strong>会員ID</strong></h5>
 				</td>
 				<td>
+					<%= @customer.id %>
 				</td>
 			</tr>
 			<tr>
@@ -66,6 +67,14 @@
 			<tr>
 				<td>
 					<h5><strong>会員ステータス</strong></h5>
+				</td>
+				<td>
+					<%= f.radio_button :is_deleted, "有効" %>
+					<%= f.label :有効 %>
+				</td>
+				<td>
+					<%= f.radio_button :is_deleted, "退会済み" %>
+					<%= f.label :退会済み %>
 				</td>
 			</tr>
 		</tbody>

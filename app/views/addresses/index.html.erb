@@ -1,3 +1,4 @@
+<%= render 'customers/list', cutomer: @customer %>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-1">
@@ -6,7 +7,9 @@
 			<div class="title">
 				<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top: 50px;margin-left: 60px">配送先登録/一覧</h3>
 			</div>
-			<%= form_for(@addresses, url: '/addresses') do |f| %>
+			<%= form_for(@address) do |f| %>
+			<table class="table-borderless">
+				<tbody>
 			<tr>
 				<td>
 					<h5><strong>郵便番号（ハイフンなし）</strong></h5>
@@ -34,6 +37,8 @@
 					<%= f.submit '登録する', class:"btn-success", style:"padding-left:40px; padding-right:40px; margin-left: 100px;" %>
 				</td>
 			</tr>
+		</tbody>
+	</table>
 			<% end %>
 
 			<table class="table table-bordered">
@@ -58,8 +63,8 @@
 							<%= address.receiver %>
 						</td>
 						<td>
-							<%= link_to '編集する', edit_address_path(address), class: "btn-sm btn-primary" %>
-							<%= link_to "消去する", destroy_address_path(@address.id), method: delete, "data-comfirm" => "本当に削除しますか？" %>
+							<%= link_to '編集する', edit_address_path(address.id), class: "btn-sm btn-primary" %>
+							<%= link_to "消去する", address_path(address.id), method: :delete, "data-comfirm" => "本当に削除しますか？" %>
 						</td>
 					</tr>
 					<% end %>
