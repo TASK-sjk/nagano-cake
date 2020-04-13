@@ -16,10 +16,13 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
 
-# is_deletedカラムがnil以外のCustomer（大会済）をはじく
+  enum is_deleted: {有効: false, 退会済み: true}
+
+# is_deletedカラムがtrueのCustomer（大会済）をはじく
   def active_for_authentication?
-    super && (self.is_deleted == nil)
+    super && (self.is_deleted == "有効")
   end
+
 
 # Customerの検索をする際の検索方法を選択できるようにする
   def self.search(method,search)
