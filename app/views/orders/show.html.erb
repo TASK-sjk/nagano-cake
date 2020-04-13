@@ -1,2 +1,87 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<%= render 'customers/list', customer: @customer %>
+<div class="container">
+    <div class="row">
+        <h3 style="background-color: #DDDDDD; width: 160px; text-align: center; margin-top:50px;margin-left:140px; margin-bottom: 20px">注文履歴詳細</h3>
+        <div class="first-table col-sm-6">
+            <h4><strong>注文情報</strong></h4>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-sm-3" style="background-color: #DCDCDC; border-color: black; padding-right: 5px">注文日</td>
+                        <td style="border-color: black;"><%= @order.created_at %></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #DCDCDC; border-color: black;">配送先</td>
+                        <td style="border-color: black;"><%= @order.postcode %><br>
+                            <%= @order.address %><br>
+                            <%= @order.customer.last_name %><%= @order.customer.first_name %>
+                        <!-- もしくは受取人？ -->
+                    </td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #DCDCDC; border-color: black;">支払い方法</td>
+                        <td style="border-color: black;"><%= @order.pay_type %></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #DCDCDC; border-color: black;">ステータス</td>
+                        <td style="border-color: black;"><%= @order.status %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="second-table col-sm-3">
+            <h4><strong>請求情報</strong></h4>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-sm-5" style="background-color: #DCDCDC; border-color: black;">商品合計</td>
+                        <td style="border-color: black;"><%= @order.total_price %></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #DCDCDC; border-color: black;">配送料</td>
+                        <td style="border-color: black;"><%= @order.shipping_fee %></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #DCDCDC; border-color: black;"><strong>ご請求額</strong></td>
+                        <!-- 変更が必要 -->
+                        <td style="border-color: black;"><%= @order.total_price %> プラス　<%= @order.shipping_fee %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="third-table col-sm-8">
+            <h4><strong>請求情報</strong></h4>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-sm-7" style="background-color: #DCDCDC; border-color: black;">商品</td>
+                        <td class="col-sm-2" style="background-color: #DCDCDC; border-color: black;">単価（税込）</td>
+                        <td style="background-color: #DCDCDC; border-color: black;">個数</td>
+                        <td style="background-color: #DCDCDC; border-color: black;">小計</td>
+                    </tr>
+                    <%= @order.each do |order| %>
+                    <tr>
+                        <td style="border-color: black;"><%= order.order_item.item.name %></td>
+                        <td style="border-color: black;"><%= order.order.price %></td>
+                        <td style="border-color: black;"><%= order.order_item.number %></td>
+                        <!-- 変更が必要 -->
+                        <td style="border-color: black;"><%= order.order.price %> 掛ける　<%= order.order_item.number %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- controller -->
+def show
+    @order.new_total_price = @order.total_price + @order.shipping_fee
+    @order.pn = @order.order.price * @order.order_item.number
+end
+
+
+
+

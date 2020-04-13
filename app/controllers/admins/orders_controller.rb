@@ -4,4 +4,7 @@ class Admins::OrdersController < ApplicationController
 
   def show
   end
+
+  def top
+  end
 end

@@ -6,3 +6,4 @@ class CartItem < ApplicationRecord
 	validates :customer_id, presence: true
 	validates :number, presence: true
 end
+

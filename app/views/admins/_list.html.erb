@@ -1,0 +1,53 @@
+<header style="margin-bottom: 50px">
+  <nav class="navbar navbar-fixed-top" style="background-color: #232f3e;">
+    <div class="container relative">
+      <div class="row">
+        	<ul class="nav navbar-nav navbar-left">
+        		<li>
+					<img src="/assets/logo.jpg" style="width: 70px; height: 70px; border-radius: 50%; margin-top: 4px;">
+				</li>
+			</ul>
+            <ul class="nav navbar-nav navbar-right">
+            <% if admin_signed_in? %>
+                <li style="margin-top: 10px;">
+                  <%= link_to '商品一覧', admins_items_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 5px;" %>
+                </li>
+                <li style="margin-top: 10px; margin-left: 10px;">
+                  <%= link_to '会員一覧', admins_customers_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 5px;" %>
+                </li>
+                <li style="margin-top: 10px; margin-left: 10px;">
+                  <%= link_to '注文履歴一覧', admins_orders_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 5px;" %>
+                </li>
+                <li style="margin-top: 10px; margin-left: 10px;">
+                  <%= link_to 'ジャンル管理', admins_categories_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 5px;" %>
+                </li>
+                <li style="margin-top: 10px; margin-left: 10px;">
+                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-sm", style:"background-color: white; color: black; padding: 5px;" %>
+                </li><br>
+                <li style="margin: px;">
+                	<%= form_tag(search_path,:method => 'get') do %>
+                	<table class="input-group">
+                		<tbody>
+                			<tr>
+                				<td><%= select_tag 'range', options_for_select([["会員", "1"], ["商品", "2"]]), id: 'range', style:"margin-right: 10px;" %>
+                				</td>
+                				<td style="margin-right: 20px;">
+                					<%= select(@search_content, :search_method, [["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+                				</td>
+                				<td><%= text_field_tag :search_search, "", placeholder: " 検索", class:"glyphicon glyphicon-search", style:"margin-left: 10px; border-radius: 10px" %>
+                				</td>
+                				<td><input type="submit", value="&#xf002", class="fas fa-search", style="background-color: transparent; position: relative; top: 1px; right: 30px; border-radius: 10px; border-color: transparent; outline: none;">
+                					<!-- submit_tagだとfont awesomeが使えないのでinputタグに変更 -->
+                					<!-- <%= submit_tag '検索', :name => nil, class:"btn btn-sm", style:"padding: 1px; background-color: transparent; color: red; position: relative; top: 2px; right: 20px" %> -->
+                				</td>
+                			</tr>
+					  	</tbody>
+					</table>
+					<% end %>
+                </li>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+  </nav>
+</header>
