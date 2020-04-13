@@ -1,20 +1,21 @@
 <%= render 'customers/list', customer: @customer %>
 
-<div class="row">
+<div class="container">
+	<div class="row">
 
-	<div class="col-xs-3">
-		<%= render 'items/category.search', categories: @categories %>
+		<div class="col-xs-3">
+			<%= render 'items/category.search', categories: @categories %>
 
-	</div>
+		</div>
 
-	<div class="col-xs-4">
-		<%= attachment_image_tag @item, :image ,:fill, 400, 230, style:"margin-top: 70px;margin-left:50px;" %>
-	</div>
+		<div class="col-xs-4">
+			<%= attachment_image_tag @item, :image ,:fill, 400, 230, style:"margin-top: 70px;margin-left:50px;" %>
+		</div>
 
-	<div class="col-xs-5">
-		<table class="table-borderless" style="margin-top:70px; margin-bottom:15px;margin-left:150px;">
+		<div class="col-xs-5">
+			<table class="table-borderless" style="margin-top:70px; margin-bottom:15px;margin-left:150px;font-size: 25px;line-height: 200%; ">
 				<tr>
-					<td><%= @item.name %>
+					<td><strong><%= @item.name %></strong>
 					</td>
 				</tr>
 				<tr>
@@ -22,8 +23,17 @@
 				</tr>
 				<tr>
 					<td>¥<%= addTax(@item.price,1.1) %>（税込）
-						</td>
+					</td>
 				</tr>
 			</table>
-    </div>
+			<table style="margin-left:160px;">
+				<%= form_for @cart_item do |f| %>
+				<tr>
+					<td style="padding-right: 50px;"><%= f.select :number, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10]] %><%= f.hidden_field :item_id, :value => @item.id %></td>
+					<td><%= f.submit "カートに入れる" ,class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px;" %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
 </div>

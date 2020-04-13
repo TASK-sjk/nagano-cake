@@ -9,7 +9,11 @@
 		</div>
 
 		<div class="col-xs-9">
-			<h3 style="background-color: #DDDDDD;width: 200px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:10px">商品一覧</h3>
+			<% if params[:category_id] %> 
+			<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:10px"><%= @category.name %>一覧（全<%= @items.count %>件）</h3> 
+			<% else %> 
+			<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:10px">商品一覧（全<%= @items.count %>件）</h3> 
+			<% end %>
 
 			<div class="row">
 				<% @items.each do |item| %>
@@ -36,3 +40,4 @@
 		</div>
 	</div>
 </div>
+

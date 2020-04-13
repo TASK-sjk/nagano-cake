@@ -1,5 +1,7 @@
 <%= render 'admins/list' %>
-<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:70px">商品一覧画面</h3>
+
+<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:90px">商品一覧画面</h3>
+
 
 
 <div class="container">
@@ -24,6 +26,8 @@
 				</tr>
 				<% end %>
 			</table>
+			<%= link_to '商品新規登録', new_admins_item_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 20px; margin-left:750px;" %>
 		</div>
+
 	</div>
 </div>
