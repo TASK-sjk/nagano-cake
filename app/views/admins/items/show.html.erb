@@ -1,4 +1,4 @@
-<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:70px">商品詳細画面</h3>
+<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:90px">商品詳細画面</h3>
 
 <div class="container">
 	<div class="row">
@@ -6,7 +6,7 @@
 			<%= attachment_image_tag @item, :image ,:fill, 300, 200,fallback: "icon-no-image.svg" ,size:'300x200' %>
 		</div>
 		<div class="col-xs-6">
-			<table class="table">
+			<table class="table" style="font-size: 15px;">
 				<tr>
 					<th>商品名</th>
 					<td><%= @item.name %>
