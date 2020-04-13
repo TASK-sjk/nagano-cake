@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    @orders = Order.all
   end
 
   def create
@@ -9,6 +10,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    customer = current_customer
+    @order = current_customer.order or Order.find(params[:id])
   end
 
   def info
