@@ -10,9 +10,10 @@
 						<h5><strong>顧客ID</strong></h5>
 					</td>
 					<td>
+						<%= @customer.id %>
 					</td>
 					<td>
-						#有効・無効
+						<%= @customer.is_deleted %>
 					</td>
 				</tr>
 				<tr>
@@ -20,8 +21,8 @@
 						<h5><strong>氏名</strong></h5>
 					</td>
 					<td>
-						<%= @current_customer.last_name %>
-						<%= @current_customer.first_name %>
+						<%= @customer.last_name %>
+						<%= @customer.first_name %>
 					</td>
 				</tr>
 				<tr>
@@ -29,8 +30,8 @@
 						<h5><stromg>フリガナ</stromg></h5>
 					</td>
 					<td>
-						<%= @current_customer.kana_last_name %>
-						<%= @current_customer.kana_first_name %>
+						<%= @customer.kana_last_name %>
+						<%= @customer.kana_first_name %>
 					</td>
 				</tr>
 				<tr>
@@ -38,7 +39,7 @@
 						<h5><strong>郵便番号</strong></h5>
 					</td>
 					<td>
-						<%= @current_customer.postcode %>
+						<%= @customer.postcode %>
 					</td>
 				</tr>
 				<tr>
@@ -46,7 +47,7 @@
 						<h5><strong>住所</strong></h5>
 					</td>
 					<td>
-						<%= @current_customer.address %>
+						<%= @customer.address %>
 					</td>
 				</tr>
 				<tr>
@@ -54,7 +55,7 @@
 						<h5><stong>電話番号</stong></h5>
 					</td>
 					<td>
-						<%= @current_customer.phone_number %>
+						<%= @customer.phone_number %>
 					</td>
 				</tr>
 				<tr>
@@ -62,12 +63,12 @@
 						<h5><strong>メールアドレス</strong></h5>
 					</td>
 					<td>
-						<%= @current_customer.email %>
+						<%= @customer.email %>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<%= link_to '編集する', edit_admins_customers_path(@customer), class: "btn-sm btn-primary" %>
+						<%= link_to '編集する', edit_admins_customer_path, class: "btn-sm btn-primary" %>
 					</td>
 					<td>
 						<%= link_to '注文履歴一覧を見る', orders_path, class: "btn-sm btn-primary" %>

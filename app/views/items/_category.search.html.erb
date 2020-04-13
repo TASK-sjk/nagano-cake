@@ -1,9 +1,10 @@
 <table class="table table-hover table-inverse" style="margin:40px 40px 0 20px;font-size: 15px;">
 
+
 	<tr>
 		<th>ジャンル検索</th>
 	</tr>
-	<% categories.each do |category| %>
+	<% @categories.each do |category| %>
 	<tr>
 		<th><%= link_to category.name, items_path(category_id: category.id) %>
 		</th>
