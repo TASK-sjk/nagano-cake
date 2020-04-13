@@ -15,8 +15,9 @@ class Customer < ApplicationRecord
   validates :postcode, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
-
+  enum is_deleted: {有効: false, 退会済み: true}
   def active_for_authentication?
-    super && (self.is_deleted == nil)
+    super && (self.is_deleted == "有効")
   end
+
 end
