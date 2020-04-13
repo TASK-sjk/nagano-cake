@@ -22,8 +22,11 @@ Rails.application.routes.draw do
   # 追加
   get 'customers/leave' => 'customers#leave', as: 'customers/leave'
 
+  get 'search' => 'admins#search', as: 'search'
+
   namespace :admins do
     get 'admins/top' => 'admins#top', as: 'top'
+    # 検索結果表示画面の追加
     resources :customers, only:[:index, :edit, :show]
     resources :categories, only:[:index, :edit, :create, :update]
     resources :items, only:[:index, :show, :new, :edit, :create, :update]

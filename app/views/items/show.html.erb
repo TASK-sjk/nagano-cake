@@ -1,2 +1,29 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<%= render 'customers/list', customer: @customer %>
+
+<div class="row">
+
+	<div class="col-xs-3">
+		<%= render 'items/category.search', categories: @categories %>
+
+	</div>
+
+	<div class="col-xs-4">
+		<%= attachment_image_tag @item, :image ,:fill, 400, 230, style:"margin-top: 70px;margin-left:50px;" %>
+	</div>
+
+	<div class="col-xs-5">
+		<table class="table-borderless" style="margin-top:70px; margin-bottom:15px;margin-left:150px;">
+				<tr>
+					<td><%= @item.name %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= @item.body %></td>
+				</tr>
+				<tr>
+					<td>¥<%= addTax(@item.price,1.1) %>（税込）
+						</td>
+				</tr>
+			</table>
+    </div>
+</div>
