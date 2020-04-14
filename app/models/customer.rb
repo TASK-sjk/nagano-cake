@@ -15,9 +15,27 @@ class Customer < ApplicationRecord
   validates :postcode, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
+
   enum is_deleted: {有効: false, 退会済み: true}
+
+# is_deletedカラムがtrueのCustomer（大会済）をはじく
   def active_for_authentication?
     super && (self.is_deleted == "有効")
   end
 
+
+# Customerの検索をする際の検索方法を選択できるようにする
+  def self.search(method,search)
+    if method == "forward_match"
+      @customers = Customer.where("last_name LIKE?","#{search}%")
+    elsif method == "backward_match"
+      @customers = Customer.where("last_name LIKE?","%#{search}")
+    elsif method == "perfect_match"
+      @customers = Customer.where("last_name LIKE?","#{search}")
+    elsif method == "partial_match"
+      @customers = Customer.where("last_name LIKE?","%#{search}%")
+    else
+      @customers = Customer.all
+    end
+  end
 end

@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   # 追加
   get 'customers/leave' => 'customers#leave', as: 'customers/leave'
 
+  # 検索結果表示画面の追加
+  get 'search' => 'admins#search', as: 'search'
+
   namespace :admins do
     get '/top' => 'admins#top', as: 'top'
     patch 'customers/:id/update' => 'customers#update', as: 'update'
@@ -41,8 +44,14 @@ Rails.application.routes.draw do
   resources :addresses, only:[:index, :create, :new, :edit, :update, :destroy]
   resources :orders, only:[:index, :create, :show]
    get 'order/confirm' => 'order#confirm', as: 'order/confirm'
-  resources :cart_items, only:[:index, :create, :new, :destroy]
+  resources :cart_items, only:[:index, :create, :new, :destroy, :update] do
+   collection do
+    delete 'destroy_all'
+   end
+  end
   resources :items
+  resources :order_items, only:[:create, :index]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

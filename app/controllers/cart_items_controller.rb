@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-
+before_action :setup_cart_item!, only: [:create]
   def index
   	@customer = current_customer
   	@cart_item = @customer.cart_items
@@ -7,14 +7,11 @@ class CartItemsController < ApplicationController
   end
 
   def create
-  	# @item = Item.find(params[:cart_item][:item_id])
-  	# @cart_item = current_customer.cart_items.new(cart_item)
-  	# @cart_item.item_id = @item.id
-  	# @cart_item.save
-  	# redirect_to current_customer.cart_items_path
-
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer.id
+    if @cart_item.blank?
+      @cart_item = current_customer.cart_items.build(item_id: params[:cart_item][:item_id], number: 0)
+    end
+    @cart_item.number += params[:cart_item][:number].to_i
+    @cart_item.item_id = params[:cart_item][:item_id].to_i
     @cart_item.save!
     redirect_to cart_items_path
   end
@@ -25,28 +22,29 @@ class CartItemsController < ApplicationController
 
   def destroy
   	@cart_item = CartItem.find(params[:id])
-  	@cart_item
+    @cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def destroy_all
-  	Customer.find(current_customer.id).cart_items.destroy_all
+    current_customer.cart_items.destroy_all
   	redirect_back(fallback_location: root_path)
-
-  def update_item
-    @cart_item.update(number: params[:number].to_i)
-    redirect_to current_cart_items_path
   end
 
-　# カート詳細画面から、「削除」を押した時のアクション
-  def delete_item
-    @cart_item.destroy
-    redirect_to current_cart_items_path
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   private
    def cart_item_params
    	params.require(:cart_item).permit(:item_id, :customer_id, :number)
    end
+
+   def setup_cart_item!
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+  end
 
 end
 

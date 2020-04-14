@@ -8,8 +8,8 @@ class Admins::OrdersController < ApplicationController
   	@order = Order.find(params[:id])
   end
 
-private
+	private
 	def order_item_params
 		params.require(:order_item).permit(:customer_id, :item_id)
-
+    end
 end
