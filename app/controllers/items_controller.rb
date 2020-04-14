@@ -23,7 +23,6 @@ class ItemsController < ApplicationController
     @categories = Category.where(status: "有効")
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
-
   end
 
   def update
