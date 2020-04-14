@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   def create
   end
 
-  def new
+  def confirm
   end
 
   def edit

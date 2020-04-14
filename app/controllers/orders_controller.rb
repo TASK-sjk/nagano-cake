@@ -15,5 +15,6 @@ class OrdersController < ApplicationController
   end
 
   def info
+    @order = 
   end
 end
