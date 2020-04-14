@@ -1,2 +1,37 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:50px;margin-left:70px">注文詳細画面</h3>
+
+<p>購入者</p> <%= @order_item.customer.name%>
+<p>配送先</p> <%= @order_item.place %>
+<P>支払方法</P> <%= @order_item.pay_type %>
+<%= form_for @order do |f| %>
+<p>注文ステータス</p><%= f.select :status, options_for_select(Order.status.keys) %><%= f.submit "更新する" class="btn btn-primary" %>
+<% end %>
+
+<table>
+	<thead>
+		<td>
+			<tr>商品名</tr>
+			<tr>単価(税込)</tr>
+			<tr>数量</tr>
+			<tr>小計</tr>
+			<tr>制作ステータス</tr>
+		</td>
+	</thead>
+	<tbody>
+		<% @order_items each do |item| %>
+		<td>
+			<tr><%= item_name%></tr>
+			<tr><%= (item_price).to_i %></tr>
+			<tr><%= (item_number).to_i %></tr>
+			<tr><%= (item_number * item_price).to_i %></tr>
+			<%= form_for @order_item do |f| %>
+			<tr> <%= f.select :status, options_for_select(OrderItems.status.keys) %>
+				<%= f.submit "更新する" class="btn btn-primary" %></tr>
+			<% end %>
+			<% end %>
+		</td>
+	</tbody>
+</table>
+商品合計<%= () %>
+送料<p>800</p>
+請求合計金額<%=  %>

@@ -1,2 +1,32 @@
-<h1>Orders#info</h1>
-<p>Find me in app/views/orders/info.html.erb</p>
+<div class="container">
+<div class="row">
+<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top: 50px;margin-left: 60px">注文情報入力</h3>
+
+<%= form_with url:    _path do |f| %>
+    <%= f.label :pay_type, :クレジットカード %>
+    <%= f.radio_button :pay_type, "クレジットカード" %></br>
+    <%= f.label :pay_type, :銀行振込 %>
+    <%= f.radio_btton :pay_type, "銀行振込" %>
+<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top: 50px;margin-left: 60px">お届け先</h3>
+	<%= f.label :place, :ご自身の住所 %>
+	<%= f.radio_button :place_type, 1 %></br>
+	<%= @customer.postcode %><%= @customer.address %></br>
+	<%= @customer.name %></br>
+
+	<%= f.label :place, :登録済みの住所から選択 %>
+	<%= f.radio_button :place_type, 2 %></br>
+	<%= f.collection_select :id, @adresses, :id, :full_adress, class: "btn-btn-info" %></br>
+
+	<%= f.label :place, :新しいお届け先 %>
+	<%= f.radio_button :place_type, 3 %></br>
+	<p>郵便番号(ハイフンなし)
+	<%= f.text_field :new_postcode, autofocus: true, autocomplete: "postcode", class: "col-xs-6 pull-right" %></p></br>
+	<p>住所
+	<%= f.text_field :new_adress, autofocus: true, autocomplete: "adress", class: "col-xs-6 pull-right" %></p></br>
+	<p>宛名
+	<%= f.text_field :new_receiver, autofocus: true, autocomplete: "adress", class: "col-xs-6 pull-right" %></p></br>
+	<%= f.submit "確認画面へ進む", class: "btn-btn-primary col-xs-6 col-xs-offset-4" %>
+
+	<% end %>
+</div>
+</div>

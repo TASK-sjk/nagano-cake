@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about', as: 'about'
   get 'home/thanks' => 'homes#thanks', as: 'thanks'
   get 'order/info' => 'orders#info', as: 'info'
+
   # 変更
   # get 'customer/hide' => 'customers#hide', as: 'customer/hide'
   put 'customers/hide' => 'customers#hide', as: 'customers/hide'
@@ -41,9 +42,16 @@ Rails.application.routes.draw do
   # editのURLがdeviseのregistrations edit のURLと被ってしまうので変更
   get 'customer/edit' => 'customers#edit', as: 'customer/edit'
   resources :addresses, only:[:index, :create, :new, :edit, :update, :destroy]
-  resources :orders, only:[:index, :create, :new, :show]
-  resources :cart_items, only:[:index, :create, :new, :destroy]
+  resources :orders, only:[:index, :create, :show]
+   get 'order/confirm' => 'order#confirm', as: 'order/confirm'
+  resources :cart_items, only:[:index, :create, :new, :destroy, :update] do
+   collection do
+    delete 'destroy_all'
+   end
+  end
   resources :items
+  resources :order_items, only:[:create, :index]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
