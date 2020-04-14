@@ -1,7 +1,9 @@
 <%= render 'customers/list', customer: @customer %>
 <div class="container">
   <div class="row">
-    <%= flash[:error] %>
+    <div style="margin-top: 5px; color: red;">
+      <%= flash[:error] %>
+    </div>
     <h3 style="background-color: #DDDDDD;width: 340px;text-align: center;margin-top: 130px">会員の方はこちらからログイン</h3>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

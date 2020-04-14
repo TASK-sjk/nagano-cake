@@ -1,90 +1,96 @@
 <div class="container">
 	<div class="title">
-		<h3 style="background-color: #DDDDDD; width: 160px; text-align: center; margin-top: 50px; margin-left: 30px">会員編集画面</h3>
+		<h3><strong>会員編集画面</strong></h3>
 	</div>
 
 	<%= form_for @customer, url:admins_update_path do |f| %>
-	<table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
+	<table class="table-borderless" style="margin-top:50px; margin-bottom:15px; margin-left: 70px; border-collapse: separate;">
 		<tbody>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>会員ID</strong></h5>
 				</td>
-				<td>
+				<td style="height: 50px;">
 					<%= @customer.id %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>氏名</strong></h5>
 				</td>
-				<td>
-					<%= f.text_field :last_name %>
-					<%= f.text_field :first_name %>
+				<td style="height: 50px;">
+					<%= f.text_field :last_name, style:"border-radius: 5px; border: 1px solid black; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
+					<!-- spanを追加することにより、スペースを開ける -->
+					<span style="padding-right: 10px"></span>
+					<%= f.text_field :first_name, style:"border-radius: 5px; border: 1px solid black; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>フリガナ</strong></h5>
 				</td>
-				<td>
-					<%= f.text_field :kana_last_name %>
-					<%= f.text_field :kana_first_name %>
+				<td style="height: 50px;">
+					<%= f.text_field :kana_last_name, style:"border-radius: 5px; border: 1px solid black; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
+					<!-- spanを追加することにより、スペースを開ける -->
+					<span style="padding-right: 10px"></span>
+					<%= f.text_field :kana_first_name, style:"border-radius: 5px; border: 1px solid black; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>郵便番号</strong></h5>
 				</td>
-				<td>
-					<%= f.text_field :postcode %>
+				<td style="height: 50px;">
+					<%= f.text_field :postcode, style:"border-radius: 5px; border: 1px solid black; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>住所</strong></h5>
 				</td>
-				<td>
-					<%= f.text_field :address %>
+				<td style="height: 50px;">
+					<%= f.text_field :address, style:"border-radius: 5px; border: 1px solid black; padding-right: 300px; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>電話番号</strong></h5>
 				</td>
-				<td>
-					<%= f.text_field :phone_number %>
+				<td style="height: 50px;">
+					<%= f.text_field :phone_number, style:"border-radius: 5px; border: 1px solid black; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>メールアドレス</strong></h5>
 				</td>
-				<td>
-					<%= f.text_field :email %>
+				<td style="height: 50px;">
+					<%= f.text_field :email, style:"border-radius: 5px; border: 1px solid black; text-align: center; padding-top: 4px; padding-bottom: 4px" %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td style="height: 50px;">
 					<h5><strong>会員ステータス</strong></h5>
 				</td>
-				<td>
+				<td style="height: 50px;">
 					<%= f.radio_button :is_deleted, "有効" %>
 					<%= f.label :有効 %>
-				</td>
-				<td>
+					<span style="padding-right: 20px"></span>
+<!-- tdタグの削除 -->
+<!-- 				</td>
+				<td> -->
 					<%= f.radio_button :is_deleted, "退会済み" %>
 					<%= f.label :退会済み %>
 				</td>
 			</tr>
+			<tr>
+				<!-- ボタンをテーブルの中に移動 -->
+				<td style="padding-top: 30px"><%= f.submit "編集を保存する", class:"btn btn-primary", style:"background-color: blue; padding-right:px;" %>
+				</td>
+			</tr>
 		</tbody>
 	</table>
-
-	<div class="actions">
-		<%= f.submit "編集を保存する", class:"btn btn-primary", style:"padding-left:40px; padding-right:40px; margin-left: 150px;" %>
-
-		<% end %>
-	</div>
+	<% end %>
 </div>
 
 

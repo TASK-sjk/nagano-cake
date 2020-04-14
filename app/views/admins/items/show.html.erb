@@ -1,40 +1,49 @@
 <%= render 'admins/list' %>
 
-<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:90px">商品詳細画面</h3>
-
 <div class="container">
 	<div class="row">
-		<div class="col-xs-4">
-			<%= attachment_image_tag @item, :image ,:fill, 300, 200,fallback: "icon-no-image.svg" ,size:'300x200' %>
-		</div>
-		<div class="col-xs-6">
-			<table class="table" style="font-size: 15px;">
-				<tr>
-					<th>商品名</th>
-					<td><%= @item.name %>
-					</td>
-				</tr>
-				<tr>
-					<th>商品説明</th>
-					<td><%= @item.body %></td>
-				</tr>
-				<tr>
-					<th>ジャンル</th>
-					<td><%= @item.category.name %></td>
-				</tr>
-				<tr>
-					<th>税込価格（税抜き価格）</th>
-					<td><%= addTax(@item.price,1.1) %>
-						(<%= @item.price %> ) 円</td>
-				</tr>
-				<tr>
-					<th>販売ステータス</th>
-					<td><%= @item.status %></td>
-				</tr>
-			</table>
-		</div>
-		<div class="col-xs-2">
-			<%= link_to '編集する', edit_admins_item_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 200px;" %>
+		<!-- h3を記述する場所をrowの中に変更 -->
+		<h3 style=";margin-bottom:20px;"><strong>商品 詳細画面</strong></h3>
+
+		<!-- 新たなdivの追加 商品詳細内容フィールドをdivで囲って一つの囲いにしている -->
+		<div style="margin-top: 90px;">
+			<!-- col-xs-4からcol-xs-３に変更 -->
+			<div class="col-xs-3">
+				<%= attachment_image_tag @item, :image ,:fill, 300, 200,fallback: "icon-no-image.svg" ,size:'300x200' %>
+			</div>
+
+			<!-- col-xs-6からcol-xs-5に変更 -->
+			<!-- テーブルの枠の削除 テーブルにmergin-leftの追加 -->
+			<div class="col-xs-5">
+				<table class="table" style="font-size: 15px; margin-left: 50px;">
+					<tr>
+						<th style="border: 0px none;">商品名</th>
+						<td style="border: 0px none;"><%= @item.name %>
+						</td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;">商品説明</th>
+						<td style="border: 0px none;"><%= @item.body %></td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;">ジャンル</th>
+						<td style="border: 0px none;"><%= @item.category.name %></td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;">税込価格（税抜き価格）</th>
+						<td style="border: 0px none;"><%= addTax(@item.price,1.1) %>
+							(<%= @item.price %> ) 円</td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;">販売ステータス</th>
+						<td style="border: 0px none;"><%= @item.status %></td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-xs-2">
+				<!-- ボタンの色と大きさの変更 -->
+				<%= link_to '編集する', edit_admins_item_path, class:"btn btn-lg", style:"background-color: #3399FF; color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 200px;" %>
+			</div>
 		</div>
 	</div>
 </div>

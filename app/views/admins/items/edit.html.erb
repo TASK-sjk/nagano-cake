@@ -1,9 +1,10 @@
 <%= render 'admins/list' %>
 
-<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:90px">商品編集画面</h3>
-
 <div class="container">
 	<div class="row">
+		<!-- h3を記述する場所をrowの中に変更 -->
+		<h3 style="margin-bottom:20px;"><strong>商品 編集画面</strong></h3>
+
 		<%= form_for @item, url:admins_item_path do |f| %>
 
 		<% if @item.errors.any? %>
@@ -16,47 +17,53 @@
 			</ul>
 		</div>
 		<% end %>
-		<div class="col-xs-4">
-			<div class="field">
-				<%= attachment_image_tag @item, :image ,:fill, 300, 200,fallback: "icon-no-image.svg" ,size:'300x200'  %>
-				<br>
-				<br>
-				<%= f.attachment_field :image ,style:"margin-left:40px;" %>
+
+		<!-- 新たなdivの追加 商品詳細内容フィールドをdivで囲って一つの囲いにしている -->
+		<div style="margin-top: 90px;">
+			<!-- col-xs-4からcol-xs-３に変更 -->
+			<div class="col-xs-3">
+				<div class="field">
+					<%= attachment_image_tag @item, :image ,:fill, 300, 200,fallback: "icon-no-image.svg" ,size:'300x200'  %>
+					<br>
+					<br>
+					<%= f.attachment_field :image ,style:"margin-left:40px;" %>
+				</div>
+
 			</div>
 
-		</div>
+			<!-- col-xs-6からcol-xs-5に変更 -->
+			<!-- テーブルの枠の削除 テーブルにmergin-leftの追加 -->
+			<div class="col-xs-5">
+				<table class="table" style="font-size: 15px; margin-left: 50px;">
+					<tr>
+						<th style="border: 0px none;"><%= f.label :商品名 %></th>
+						<td style="border: 0px none;"><%= f.text_field :name %></td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :商品説明 %></th>
+						<td style="border: 0px none;"><%= f.text_area :body %></td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :ジャンル %></th>
+						<td style="border: 0px none;"><%= f.select :category_id, Category.all.map { |category| [category.name, category.id] } %>
 
-		<div class="col-xs-6">
+						</td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :税抜き価格 %></th>
+						<td style="border: 0px none;"><%= f.text_field :price %></td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :販売ステータス %></th>
+						<td style="border: 0px none;"><%= f.select :status, Item.statuses.keys.to_a, {} %></td>
+					</tr>
+				</table>
+			</div>
 
-			<table class="table" style="font-size: 15px;">
-				<tr>
-					<th><%= f.label :商品名 %></th>
-					<td><%= f.text_field :name %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :商品説明 %></th>
-					<td><%= f.text_area :body %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :ジャンル %></th>
-					<td><%= f.select :category_id, Category.all.map { |category| [category.name, category.id] } %>
-
-				</td>
-			</tr>
-			<tr>
-				<th><%= f.label :税抜き価格 %></th>
-				<td><%= f.text_field :price %></td>
-			</tr>
-			<tr>
-				<th><%= f.label :販売ステータス %></th>
-				<td><%= f.select :status, Item.statuses.keys.to_a, {} %></td>
-			</tr>
-		</table>
-	</div>
-
-	<div class="col-xs-2">
-		<%= f.submit "変更を保存",class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top:200px " %>
-	</div>
-	<% end %>
+			<div class="col-xs-2">
+				<!-- ボタンの色と大きさの変更 -->
+				<%= f.submit "変更を保存",class:"btn btn-lg", style:"background-color: #3399FF; color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top:200px " %>
+			</div>
+			<% end %>
 </div>
 </div>

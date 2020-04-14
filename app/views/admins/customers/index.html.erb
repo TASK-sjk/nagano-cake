@@ -1,36 +1,34 @@
-<div class="conteiner">
+<div class="container">
 	<div class="row">
-		<div class="col-xs-2">
-		</div>
-		<div class="col-xs-9">
-			<div class="title">
-				<h3 style="background-color: #DDDDDD;width: 160px;text-align: center;margin-top: 50px;margin-left: 30px">会員一覧画面</h3>
-			</div>
+		<h3 style="margin-left: 30px; margin-bottom: 50px"><strong>会員一覧画面</strong></h3>
+<!-- colの削除 -->
+<!-- テーブルのtdタグの縦幅の拡大 -->
+		<div style="width: 60%; margin: 0 auto;">
 			<table class="table table-hover table-inverse">
 				<thead>
 					<tr>
-						<th>会員ID</th>
-						<th>氏名</th>
-						<th>メールアドレス</th>
-						<th>ステータス</th>
+						<th style="background-color: #DCDCDC; border-top: 1px solid silver; border-bottom: 1px solid silver; height: 40px">会員ID</th>
+						<th style="background-color: #DCDCDC; border-top: 1px solid silver; border-bottom: 1px solid silver; height: 40px">氏名</th>
+						<th style="background-color: #DCDCDC; border-top: 1px solid silver; border-bottom: 1px solid silver; height: 40px">メールアドレス</th>
+						<th style="background-color: #DCDCDC; border-top: 1px solid silver; border-bottom: 1px solid silver; height: 40px">ステータス</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @customer.each do |customer| %>
 					<tr>
-						<td>
+						<td style="border-top: 1px solid silver; border-bottom: 1px solid silver; padding: 15px;">
 							<%= customer.id %>
 						</td>
-						<td>
+						<td style="border-top: 1px solid silver; border-bottom: 1px solid silver; padding: 15px;">
 							<%= link_to admins_customer_path(customer) do %>
 							<%= customer.last_name %>
 							<%= customer.first_name %>
 							<% end %>
 						</td>
-						<td>
+						<td style="border-top: 1px solid silver; border-bottom: 1px solid silver; padding: 15px;">
 							<%= customer.email %>
 						</td>
-						<td>
+						<td style="border-top: 1px solid silver; border-bottom: 1px solid silver; padding: 15px;">
 							<%= customer.is_deleted %>
 						</td>
 					</tr>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
+
   get 'home/about' => 'homes#about', as: 'about'
   get 'home/thanks' => 'homes#thanks', as: 'thanks'
   get 'order/info' => 'orders#info', as: 'info'
@@ -23,11 +24,10 @@ Rails.application.routes.draw do
   # 追加
   get 'customers/leave' => 'customers#leave', as: 'customers/leave'
 
-  # 検索結果表示画面の追加
-  get 'search' => 'admins#search', as: 'search'
-
   namespace :admins do
     get '/top' => 'admins#top', as: 'top'
+    # namespaceの外にあったので、中に移動
+    get 'search' => 'admins#search', as: 'search'
     patch 'customers/:id/update' => 'customers#update', as: 'update'
     put 'customers/:id/update' => 'customers#update'
     resources :customers, only:[:index, :edit, :show]

@@ -11,7 +11,8 @@ class OrdersController < ApplicationController
 
   def show
     customer = current_customer
-    @order = current_customer.order or Order.find(params[:id])
+    @order = Order.find(params[:id])
+    @orders = Order.where(params[:id])
   end
 
   def info

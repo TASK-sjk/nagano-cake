@@ -1,18 +1,21 @@
 <div class="container">
 	<div class="row">
 		<div class="title">
-			<h3 style="background-color: #DDDDDD;width: 300px;text-align: center;margin-top: 50px;margin-left: 60px">ジャンル編集画面</h3>
+			<h3 style="margin-bottom: 40px;"><strong>ジャンル編集画面</strong></h3>
 		</div>
 
 		<%= form_for @category, url:admins_category_path do |f| %>
 		<tr>
 			<td>
-				<h5><strong>ジャンル</strong></h5>
+				<!-- h5の削除により、テーブル上の同じ配列にジャンルという文字が表示される -->
+				<strong>ジャンル</strong>
 			</td>
 			<td>
 				<%= f.text_field :name %>
 			</td>
 			<td>
+				<!-- 空白を少し作成 -->
+				<span style="padding-right: 10px;"></span>
 				<%= f.radio_button :status, "有効" %>
 				<%= f.label :有効 %>
 			</td>
@@ -21,7 +24,8 @@
 				<%= f.label :無効 %>
 			</td>
 			<td>
-				<%= f.submit "編集を保存する", class:"btn btn-primary", style:"padding-left:40px; padding-right:40px; margin-left: 150px;" %>
+				<!-- ボタンの色の変更 -->
+				<%= f.submit "変更を保存する", class:"btn btn-primary", style:"background-color: #3399FF; margin-left: 10px; border-radius: 10px" %>
 			</td>
 		</tr>
 		<% end %>
