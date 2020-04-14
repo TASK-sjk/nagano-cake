@@ -1,77 +1,77 @@
 <div class="container">
 	<div class="row">
 		<div class="title">
-			<h3 style="background-color: #DDDDDD;width: 160px;text-align: center;margin-top: 50px;margin-left: 30px">会員詳細画面</h3>
+			<h3 style="margin-left: 30px"><strong>会員詳細画面</strong></h3>
 		</div>
-		<table class="table-borderless" style="margin-top:50px; margin-bottom:15px;border-collapse: separate;">
+		<table class="table-borderless" style="margin-top:50px;border-collapse: separate; margin-left: 100px;">
 			<tbody>
-				<tr>
-					<td>
+				<tr style="padding-top: 30px; padding-bottom:30px;">
+					<td style="padding-right: 90px; height: 50px">
 						<h5><strong>顧客ID</strong></h5>
 					</td>
-					<td>
-						<%= @customer.id %>
+					<td style="height: 50px">
+					<!-- 有効会員/退会会員の表示の変更 -->
+						<span style="padding-right: 30px;"><%= @customer.id %></span>
+						<span style="color: white; background-color: #0099FF; border-radius: 5px; padding: 5px 2px; border: 1px solid black;"><%= @customer.is_deleted %></span>
 					</td>
-					<td>
-						<%= @customer.is_deleted %>
-					</td>
+<!-- tdタグの削除 -->
 				</tr>
 				<tr>
-					<td>
+					<td style="height: 50px">
 						<h5><strong>氏名</strong></h5>
 					</td>
-					<td>
+					<td style="height: 50px">
 						<%= @customer.last_name %>
 						<%= @customer.first_name %>
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<h5><stromg>フリガナ</stromg></h5>
+					<td style="height: 50px">
+						<h5><strong>フリガナ</strong></h5>
 					</td>
-					<td>
+					<td style="height: 50px">
 						<%= @customer.kana_last_name %>
 						<%= @customer.kana_first_name %>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="height: 50px">
 						<h5><strong>郵便番号</strong></h5>
 					</td>
-					<td>
+					<td style="height: 50px">
 						<%= @customer.postcode %>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="height: 50px">
 						<h5><strong>住所</strong></h5>
 					</td>
-					<td>
+					<td style="height: 50px">
 						<%= @customer.address %>
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<h5><stong>電話番号</stong></h5>
+					<td style="height: 50px">
+						<h5><strong>電話番号</strong></h5>
 					</td>
-					<td>
+					<td style="height: 50px">
 						<%= @customer.phone_number %>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="height: 50px">
 						<h5><strong>メールアドレス</strong></h5>
 					</td>
-					<td>
+					<td style="height: 50px">
 						<%= @customer.email %>
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<%= link_to '編集する', edit_admins_customer_path, class: "btn-sm btn-primary" %>
+					<td style="padding-top: 50px">
+						<%= link_to '編集する', edit_admins_customer_path, class: "btn btn-primary", style:"background-color: blue" %>
 					</td>
-					<td>
-						<%= link_to '注文履歴一覧を見る', orders_path, class: "btn-sm btn-primary" %>
+					<td style="padding-top: 50px">
+						<%= link_to '注文履歴一覧を見る', orders_path, class: "btn btn-primary", style:"background-color: blue" %>
 					</td>
 				</tr>
 			</tbody>

@@ -12,7 +12,7 @@
 		</style>
 
 		<div style="margin-top: 50px; text-align: center">
-			<%= link_to "退会しない", customers_path, class:"btn btn-primary", style:"padding-left: 25px; padding-right: 25px; margin-right: 50px" %>
+			<%= link_to "退会しない", customers_path, class:"btn btn-primary", style:"background-color: #0099FF; padding-left: 25px; padding-right: 25px; margin-right: 50px" %>
 			<% if customer_signed_in? && @customer.id == current_customer.id %>
 			    <%= link_to "退会する", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger", style:"padding-left: 25px; padding-right: 25px; margin-right: 50px" %>
 			<% end %>

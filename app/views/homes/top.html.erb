@@ -2,11 +2,13 @@
 
 <div class="container">
   <div class="row">
+    <!-- flashの追加 -->
+    <div style="margin-top: 5px; color: green;">
+      <%= flash[:notice] %>
+    </div>
     <div class="col-xs-3">
       <%= render 'items/category.search', items: @item %>
     </div>
-
-
 
     <div class="col-xs-9">
       <div style="position: relative; display: inline-block;">

@@ -7,7 +7,6 @@ class CartItemsController < ApplicationController
 		@cart_item.customer_id = current_customer.id
 		@cart_item.save!
 		redirect_to cart_items_path
-
 	end
 
 	def new

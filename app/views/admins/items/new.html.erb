@@ -1,60 +1,99 @@
-<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:50px;margin-left:90px">商品　新規登録画面</h3>
-
 <div class="container">
 	<div class="row">
-		<%= form_for @item, url:admins_items_path do |f| %>
+		<!-- h3を記述する場所をrowの中に変更 -->
+		<h3><strong>商品 新規登録画面</strong></h3>
 
-		<% if @item.errors.any? %>
-		<div class="alert alert-warning">
-			<h2><%= @item.errors.count %>件のerrorがあります。</h2>
-			<ul>
-				<% @item.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-		<% end %>
-		<div class="col-xs-4">
-			<div class="field">
-				<%= image_tag 'icon-no-image.svg', size: '300x200' %>
-				<br>
-				<br>
-				<%= f.attachment_field :image ,style:"margin-left:40px;" %>
+		<!-- 新たなdivの追加 form_forをdivでで囲って一つの囲いにしている -->
+		<div class="new-item-form" style="margin-top: 90px;">
+			<%= form_for @item, url:admins_items_path do |f| %>
+
+			<% if @item.errors.any? %>
+			<div class="alert alert-warning">
+				<h2><%= @item.errors.count %>件のerrorがあります。</h2>
+				<ul>
+					<% @item.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+
+			<!-- col-xs-4からcol-xs-３に変更 -->
+			<div class="col-xs-3">
+				<div class="field">
+					<%= image_tag 'icon-no-image.svg', size: '300x200' %>
+					<br>
+					<br>
+
+					<!-- <input id="dummy_file" type="text" >
+					<%= f.label :image, "画像選択", class:"image-label btn-lg"%>
+					<style>
+						/*画像選択ボタンんの色と背景色の指定*/
+						.image-label {
+							color: white;
+							background-color: #3399FF;
+							margin-left: 95px;
+						}
+						/*カーソルを乗せた時に、underlineが出るのをなくす*/
+						.image-label:hover {
+							text-decoration: none;
+							cursor: pointer;
+						}
+						/*クリック時に、ボタンが凹んだように見せる*/
+						.image-label:active {
+							-webkit-transform: translateY(3px);
+							transform: translateY(3px);/*下に動く*/
+							box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+							border-bottom: none;
+						}
+						$('.image-label').on("change", function() {
+						var file = this.files[0];
+						if(file != null) {
+						document.getElementById("dummy_file").value = file.name;
+						}
+						});
+					</style> -->
+
+					<%= f.attachment_field :image ,style:"margin-left:40px;" %>
+				</div>
+
 			</div>
 
+			<!-- col-xs-6からcol-xs-5に変更 -->
+			<!-- テーブルの枠の削除 テーブルにmergin-leftの追加 -->
+			<div class="col-xs-5">
+				<table class="table" style="margin-left: 30px">
+					<tr>
+						<th style="border: 0px none;"><%= f.label :商品名 %></th>
+						<td style="border: 0px none;"><%= f.text_field :name %></td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :商品説明 %></th>
+						<td style="border: 0px none;"><%= f.text_area :body %></td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :ジャンル %></th>
+						<td style="border: 0px none;"><%= f.select :category_id, Category.where(status: "有効").map { |category| [category.name, category.id] } %>
+
+						</td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :税抜き価格 %></th>
+						<!-- 円の追加 -->
+						<td style="border: 0px none;"><%= f.text_field :price %> 円</td>
+					</tr>
+					<tr>
+						<th style="border: 0px none;"><%= f.label :販売ステータス %></th>
+						<td style="border: 0px none;"><%= f.select :status, Item.statuses.keys.to_a, {} %></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="col-xs-2">
+				<!-- ボタンの色と大きさの変更 -->
+				<%= f.submit "新規登録" ,class:"btn btn-lg", style:"background-color: #3399FF; color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 200px;" %>
+			</div>
+			<% end %>
 		</div>
-
-		<div class="col-xs-6">
-
-			<table class="table">
-				<tr>
-					<th><%= f.label :商品名 %></th>
-					<td><%= f.text_field :name %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :商品説明 %></th>
-					<td><%= f.text_area :body %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :ジャンル %></th>
-					<td><%= f.select :category_id, Category.where(status: "有効").map { |category| [category.name, category.id] } %>
-
-				</td>
-			</tr>
-			<tr>
-				<th><%= f.label :税抜き価格 %></th>
-				<td><%= f.text_field :price %></td>
-			</tr>
-			<tr>
-				<th><%= f.label :販売ステータス %></th>
-				<td><%= f.select :status, Item.statuses.keys.to_a, {} %></td>
-			</tr>
-		</table>
 	</div>
-
-	<div class="col-xs-2">
-		<%= f.submit "新規登録" ,class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 200px;" %>
-	</div>
-	<% end %>
-</div>
 </div>

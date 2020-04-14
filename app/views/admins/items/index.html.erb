@@ -1,32 +1,54 @@
 <%= render 'admins/list' %>
 
-<h3 style="background-color: #DDDDDD;width: 250px;text-align: center;margin-top:30px;margin-bottom:20px;margin-left:90px">商品一覧画面</h3>
-
-
-
 <div class="container">
 	<div class="row">
-		<div class="col-xs-10">
+		<table>
+			<tr>
+				<td>
+					<h3 style="margin-bottom:20px; padding-right: 890px"><strong>商品一覧画面</strong></h3>
+				</td>
+				<td>
+					<%= link_to "", new_admins_item_path, class:"fas fa-plus-circle fa-3x", style:"color: #3399FF; border-radius: 50%" %>
+					<style>
+						/*カーソルを乗せた時に、underlineが出るのをなくす*/
+						.fa-plus-circle:hover {
+							text-decoration: none;
+						}
+						/*クリック時に、ボタンが凹んだように見せる*/
+						.fa-plus-circle:active {
+							-webkit-transform: translateY(4px);
+							transform: translateY(4px);/*下に動く*/
+							box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+							border-bottom: none;
+						}
+					</style>
+				</td>
+			</tr>
+		</table>
+
+<!-- containerとrowの場所を一番上に移動 -->
+
+		<div style="width: 85%; margin: 0 auto;">
+			<!-- table全体の横線を黒色に訂正 -->
 			<table class="table">
-				<tr>
-					<th>商品ID</th>
-					<th>商品名</th>
-					<th>税抜き価格</th>
-					<th>ジャンル</th>
-					<th>ステータス</th>
+				<tr style="background-color: #DCDCDC;">
+					<th style="border-top: 1px solid black; border-bottom: 1px solid black;">商品ID</th>
+					<th style="border-top: 1px solid black; border-bottom: 1px solid black;">商品名</th>
+					<th style="border-top: 1px solid black; border-bottom: 1px solid black;">税抜き価格</th>
+					<th style="border-top: 1px solid black; border-bottom: 1px solid black;">ジャンル</th>
+					<th style="border-top: 1px solid black; border-bottom: 1px solid black;">ステータス</th>
 				</tr>
 				<% @items.each do |item| %>
-				<tr>
-					<th><%= item.id %></th>
-					<th><%= link_to item.name, admins_item_path(item) %>
+				<tr style="border-bottom: black;">
+					<th style="border-bottom: 1px solid black;"><%= item.id %></th>
+					<th style="border-bottom: 1px solid black;"><%= link_to item.name, admins_item_path(item) %>
 					</th>
-					<th><%= item.price %></th>
-					<th><%= item.category.name %></th>
-					<th><%= item.status %></th>
+					<th style="border-bottom: 1px solid black;"><%= item.price %></th>
+					<th style="border-bottom: 1px solid black;"><%= item.category.name %></th>
+					<th style="border-bottom: 1px solid black;"><%= item.status %></th>
 				</tr>
 				<% end %>
 			</table>
-			<%= link_to '商品新規登録', new_admins_item_path, class:"btn btn-primary btn-sm", style:"color: white; padding: 9px; padding-left: 20px; padding-right: 20px; margin-top: 20px; margin-left:750px;" %>
 		</div>
 
 	</div>

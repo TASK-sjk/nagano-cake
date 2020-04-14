@@ -8,14 +8,14 @@
                 <tbody>
                     <tr>
                         <td class="col-sm-3" style="background-color: #DCDCDC; border-color: black; padding-right: 5px">注文日</td>
-                        <td style="border-color: black;"><%= @order.created_at %></td>
+                        <td style="border-color: black;"><%= @order.created_at.to_s(:datetime_jp) %></td>
                     </tr>
                     <tr>
                         <td style="background-color: #DCDCDC; border-color: black;">配送先</td>
                         <td style="border-color: black;"><%= @order.postcode %><br>
-                            <%= @order.address %><br>
-                            <%= @order.customer.last_name %><%= @order.customer.first_name %>
-                        <!-- もしくは受取人？ -->
+                            <%= @order.place %><br>
+                            <%= @order.receiver %>
+                            <!-- or customer.last_name? -->
                     </td>
                     </tr>
                     <tr>
@@ -61,13 +61,13 @@
                         <td style="background-color: #DCDCDC; border-color: black;">個数</td>
                         <td style="background-color: #DCDCDC; border-color: black;">小計</td>
                     </tr>
-                    <%= @order.each do |order| %>
+                    <%= @order.order_items.each do |order_item| %>
                     <tr>
-                        <td style="border-color: black;"><%= order.order_item.item.name %></td>
-                        <td style="border-color: black;"><%= order.order.price %></td>
-                        <td style="border-color: black;"><%= order.order_item.number %></td>
+                        <td style="border-color: black;"><%= order_item.item.name %></td>
+                        <td style="border-color: black;"><%= order_item.price %></td>
+                        <td style="border-color: black;"><%= order_item.number %></td>
                         <!-- 変更が必要 -->
-                        <td style="border-color: black;"><%= order.order.price %> 掛ける　<%= order.order_item.number %></td>
+                        <td style="border-color: black;"><%= order_item.price %> 掛ける　<%= order_item.number %></td>
                     </tr>
                     <% end %>
                 </tbody>
@@ -77,10 +77,10 @@
 </div>
 
 <!-- controller -->
-def show
+<!-- def show
     @order.new_total_price = @order.total_price + @order.shipping_fee
     @order.pn = @order.order.price * @order.order_item.number
-end
+end -->
 
 
 

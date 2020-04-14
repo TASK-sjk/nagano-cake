@@ -2,11 +2,39 @@
   <nav class="navbar navbar-fixed-top" style="background-color: #232f3e;">
     <div class="container relative">
       <div class="row">
-          <ul class="nav navbar-nav navbar-left">
-            <li>
-              <img src="/assets/logo.jpg" style="width: 60px; height: 60px; border-radius: 50%; margin-top: 3px;">
-            </li>
-        </ul>
+        <table class="nav navbar-nav navbar-left">
+          <tr>
+            <td>
+              <%= link_to image_tag("/assets/logo.jpg", class:"logo-click", style:"width: 60px; height: 60px; border-radius: 50%; margin-top: 3px;"), "/", style:"width: 60px; height: 60px; border-radius: 50%; margin-top: 3px;" %>
+              <style>
+                /*カーソルを乗せた時に、underlineが出るのをなくす*/
+                .logo-click:hover {
+                  text-decoration: none;
+                  background-color: #232f3e;
+                }
+                /*クリック時に、ボタンが凹んだように見せる*/
+                .logo-click:active {
+                  -webkit-transform: translateY(4px);
+                  transform: translateY(4px);/*下に動く*/
+                  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+                  border-bottom: none;
+                }
+                /*カーソルを乗せた時に、underlineが出るのをなくす*/
+                .btn:hover {
+                  text-decoration: none;
+                  background-color: #232f3e;
+                }
+                /*クリック時に、ボタンが凹んだように見せる*/
+                .btn:active {
+                  -webkit-transform: translateY(4px);
+                  transform: translateY(4px);/*下に動く*/
+                  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+                  border-bottom: none;
+                }
+              </style>
+            </td>
+          </tr>
+        </table>
         <ul class="nav navbar-nav navbar-right">
           <% if customer_signed_in? %>
             <li style="margin: 10px;">
@@ -25,6 +53,9 @@
               <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
             </li>
           <% else %>
+          <li style="margin: 10px;">
+              <%= link_to 'ながのCAKEとは', about_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
+            </li>
             <li style="margin: 10px;">
               <%= link_to '商品一覧', items_path, class:"btn btn-sm", style:"background-color: white; color: black; padding: 10px;" %>
             </li>
