@@ -34,8 +34,9 @@ class OrderItemsController < ApplicationController
 			cart_items.each do |cart_item|
 				order_item = OrderItem.find_by(item_id: cart_item.item_id, order_id: 0)
 				if order_item.nil?
+					order_item = OrderItem.new
 					order_item.item_id = cart_item.item_id
-					order_item.item.count = cart.count
+					# order_item.item.count = cart_items.count
 					order_item.item.price = cart_item.item.price
 					order_item.order_id = 0
 					order_item.save
@@ -46,7 +47,7 @@ class OrderItemsController < ApplicationController
 				end
 			end
 		end
-		redirect_to order_confirm_path
+		redirect_to info_path
 
 
 	end

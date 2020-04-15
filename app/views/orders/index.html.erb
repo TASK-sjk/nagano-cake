@@ -18,8 +18,8 @@
                     <td style="border-color: black;"><%= order.created_at.to_s(:datetime_jp) %></td>
                     <td style="border-color: black;"><%= order.postcode %><br>
                         <%= order.place %></td>
-                    <td style="border-color: black;"></td>
-                    <td style="border-color: black;"></td>
+                    <td style="border-color: black;"><%= order.order_item.item.name %></td>
+                    <td style="border-color: black;"><%= order.order_item.price %></td>
                     <td style="border-color: black;"><%= order.status %></td>
                     <td style="border-color: black;"><%= link_to "表示する", order_path(order), class:"btn btn-primary" %></td>
                 </tr>
@@ -28,5 +28,3 @@
         </table>
     </div>
 </div>
-<%= order.order_item.item.name %>
-<%= order.order_item.price %>

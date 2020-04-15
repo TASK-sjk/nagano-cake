@@ -3,15 +3,6 @@ before_action :setup_cart_item!, only: [:create]
   def index
   	@customer = current_customer
   	@cart_item = @customer.cart_items
-
-<<<<<<< HEAD
-	def create
-		@cart_item = CartItem.new(cart_item_params)
-		@cart_item.customer_id = current_customer.id
-		@cart_item.save!
-		redirect_to cart_items_path
-	end
-=======
   end
 
   def create
@@ -23,7 +14,6 @@ before_action :setup_cart_item!, only: [:create]
     @cart_item.save!
     redirect_to cart_items_path
   end
->>>>>>> master
 
   def new
 

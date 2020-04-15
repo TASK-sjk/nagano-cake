@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def info
-    @order = 
+    @customer = current_customer
+    @order = Order.new
   end
 end

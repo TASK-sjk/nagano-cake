@@ -1,3 +1,4 @@
+<%= render 'customers/list', cutomer: @customer %>
 <div class="container">
 	<div class="row">
 <h1>ショッピングカート</h1>
@@ -32,6 +33,6 @@
 <p class="text-right">
 	合計金額<%= (@price).to_i %>
 </p>
-<%= link_to "購入画面へ進む", order_items_path, class:"col-xs-3 col-xs-offset-2 btn-btn-success btn-lg" %>
+<%= link_to "購入画面へ進む", orderitem_create_path, method: :create, class:"col-xs-3 col-xs-offset-2 btn-btn-success btn-lg" %>
 </div>
 </div>

@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   end
   resources :items
   resources :order_items, only:[:create, :index]
+  post 'orderitem' => 'order_items#create', as: 'orderitem/create'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
