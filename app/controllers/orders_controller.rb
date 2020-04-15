@@ -16,6 +16,11 @@ class OrdersController < ApplicationController
   end
 
   def info
-    @order = 
+    @customer = current_customer
   end
+
+  private
+   def order_params
+    params.require(:order).permit(:pay_type, :place, :postcode, :receiver, :total_price, :shipping_fee, :customer_id)
+   end
 end
